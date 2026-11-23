@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+from importlib.metadata import version
 from pathlib import Path
 
 from .config import load_config
@@ -65,6 +66,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="CLI MCP Gateway - sandboxed CLI execution for AI assistants",
     )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {version('cli-mcp')}")
     parser.add_argument(
         "--transport",
         choices=["stdio", "http"],
